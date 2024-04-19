@@ -1,15 +1,139 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+export const Home = () => {
+  const { store, actions } = useContext(Context);
+  const [newContact, setNewContact] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
+
+  // Añadir 4 perfiles de ejemplo si no hay ninguno
+  if (store.demo.length === 0) {
+    actions.addDemoItem("Nombre 1", "Teléfono 1", "Ubicación 1", "blue");
+    actions.addDemoItem("Nombre 2", "Teléfono 2", "Ubicación 2", "red");
+    actions.addDemoItem("Nombre 3", "Teléfono 3", "Ubicación 3", "green");
+    actions.addDemoItem("Nombre 4", "Teléfono 4", "Ubicación 4", "orange");
+  }
+
+  const handleInputChange = (event) => {
+    setNewContact({
+      ...newContact,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = () => {
+    actions.addDemoItem(
+      newContact.fullName,
+      newContact.phone,
+      newContact.address,
+      "blue"
+    );
+    setNewContact({
+      fullName: "",
+      email: "",
+      phone: "",
+      address: "",
+    });
+  };
+
+  return (
+    <div className="container mt-5 d-flex justify-content-center align-items-center">
+      <div className="content-container">
+        <h1>Add a new contact</h1>
+        {/* Inputs para agregar un nuevo contacto */}
+        <div className="form-group">
+          <label htmlFor="fullName">Full name:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="fullName"
+            name="fullName"
+            placeholder="Full Name"
+            value={newContact.fullName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+            value={newContact.email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="phone"
+            name="phone"
+            placeholder="Enter phone"
+            value={newContact.phone}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="address">Address:</label>
+          <input
+            type="text"
+            className="form-control"
+            id="address"
+            name="address"
+            placeholder="Enter Address"
+            value={newContact.address}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          Save
+        </button>
+        <br />
+        <br />
+        <Link to="/contacts" className="btn btn-secondary">
+          Or get back to contacts
+        </Link>
+        {/* Lista de perfiles */}
+        <ul className="list-group mt-5">
+          {store.demo.map((item, index) => (
+            <li key={index} className="list-group-item">
+              <div className="profile-info">
+                <img src={item.profilePhoto} alt="Profile" />
+                <div>
+                  <div>Name: {item.name}</div>
+                  <div>Phone: {item.phone}</div>
+                  <div>Address: {item.address}</div>
+                </div>
+              </div>
+              {/* Botones de editar y eliminar */}
+              <div>
+                <button
+                  className="btn btn-warning mr-2"
+                  onClick={() => actions.editDemoItem(index)}
+                >
+                  Editar
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => actions.deleteDemoItem(index)}
+                >
+                  Eliminar
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
