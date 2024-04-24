@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
 
 export const Single = () => {
   const { actions } = useContext(Context);
@@ -10,7 +10,7 @@ export const Single = () => {
     phone: "",
     address: "",
   });
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setNewContact({
@@ -26,7 +26,7 @@ export const Single = () => {
       newContact.address,
       "blue"
     );
-    history.push("/");
+    navigate("/");
   };
 
   return (
