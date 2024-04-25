@@ -17,6 +17,11 @@ export const Home = () => {
 
   return (
     <div className="container mt-5">
+      <div className="AddContact">
+        <Link to="/dates">
+          <button className="btn btn-primary">Add new contact</button>
+        </Link>
+      </div>
       <h1>List of Contacts</h1>
       {/* Lista de perfiles */}
       <ul className="list-group mt-5">
@@ -48,9 +53,6 @@ export const Home = () => {
           </li>
         ))}
       </ul>
-      <Link to="/contacts" className="btn btn-primary">
-        Add New Contact
-      </Link>
     </div>
   );
 };
