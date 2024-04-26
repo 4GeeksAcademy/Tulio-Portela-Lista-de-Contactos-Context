@@ -28,31 +28,34 @@ export const Home = () => {
       {/* Lista de perfiles */}
       <ul className="list-group mt-1">
         {store.demo.map((item, index) => (
-          <li
-            key={index}
-            className="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <div className="profile-info">
-              <img src={item.profilePhoto} alt="Profile" />
+          <li key={index} className="list-group-item">
+            <div className="profile-info d-flex align-items-center">
+              <img
+                src={item.profilePhoto}
+                alt="Profile"
+                className="profile-photo"
+              />
               <div>
-                <div>Name: {item.name}</div>
-                <div>Phone: {item.phone}</div>
+                <div className="Name-Icons">
+                  <span>Name: {item.name}</span>
+                  <span className="icons">
+                    <button
+                      className="btn mr-2"
+                      onClick={() => actions.editDemoItem(index)}
+                    >
+                      <FontAwesomeIcon icon={faPencilAlt} />
+                    </button>
+                    <button
+                      className="btn mr-2"
+                      onClick={() => actions.deleteDemoItem(index)}
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    </button>
+                  </span>
+                </div>
                 <div>Address: {item.address}</div>
-              </div>
-
-              <div className="profile-Buttons text-end">
-                <button
-                  className="btn mr-2"
-                  onClick={() => actions.editDemoItem(index)}
-                >
-                  <FontAwesomeIcon icon={faPencilAlt} />
-                </button>
-                <button
-                  className="btn mr-2"
-                  onClick={() => actions.deleteDemoItem(index)}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
+                <div>Phone: {item.phone}</div>
+                <div>Email: {item.email}</div>
               </div>
             </div>
           </li>

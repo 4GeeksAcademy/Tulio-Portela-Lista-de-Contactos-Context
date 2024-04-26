@@ -1,6 +1,7 @@
 .list-group-item + .list-group-item {
   border: 1px solid #7c6101b4;
 }
+
 .list-group {
   display: flex;
   flex-wrap: wrap;
@@ -19,24 +20,20 @@
   align-items: center;
 }
 
-.profile-info img {
+.profile-photo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
 }
-.btn-warning {
-  background-color: none;
+
+.icons .btn {
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.btn-warning:hover {
-  background-color: none;
-}
-
-.btn-danger {
-  background-color: none;
-}
-
-.btn-danger:hover {
-  background-color: none;
+.icons .btn:hover {
+  background-color: #f0f0f0;
 }
