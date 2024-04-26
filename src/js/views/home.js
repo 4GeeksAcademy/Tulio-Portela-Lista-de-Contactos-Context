@@ -40,12 +40,13 @@ export const Home = () => {
                 <div className="Name-Icons">
                   <span>{item.name}</span>
                   <span className="icons">
-                    <button
+                    <Link
+                      to={`/single/${item.id}`}
                       className="btn mr-2"
                       onClick={() => actions.editDemoItem(index)}
                     >
                       <FontAwesomeIcon icon={faPencilAlt} />
-                    </button>
+                    </Link>
                     <button
                       className="btn mr-2"
                       onClick={() => actions.deleteDemoItem(index)}

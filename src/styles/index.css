@@ -21,12 +21,3 @@ body {
   border: none;
   border-radius: 4px;
 }
-
-.btn-primary {
-  background-color: rgba(48, 174, 6, 0.902);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: rgba(38, 255, 0, 0.88);
-}
