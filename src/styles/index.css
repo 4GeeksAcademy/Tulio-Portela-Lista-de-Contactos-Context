@@ -5,38 +5,12 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 69%;
   margin: auto;
 }
 
 .mt-5 {
   margin-top: 3rem;
-}
-
-.list-group {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-}
-
-.list-group-item {
-  width: calc(50% - 20px);
-  margin: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-.profile-info {
-  display: flex;
-  align-items: center;
-}
-
-.profile-info img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
 }
 
 .btn {
@@ -49,28 +23,10 @@ body {
 }
 
 .btn-primary {
-  background-color: blue;
+  background-color: rgba(48, 174, 6, 0.902);
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: darkblue;
-}
-
-.btn-warning {
-  background-color: orange;
-  color: white;
-}
-
-.btn-warning:hover {
-  background-color: darkorange;
-}
-
-.btn-danger {
-  background-color: red;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: darkred;
+  background-color: rgba(38, 255, 0, 0.88);
 }

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -16,17 +18,20 @@ export const Home = () => {
   }, [actions, store.demo.length]);
 
   return (
-    <div className="container mt-5">
-      <div className="AddContact">
+    <div className="container mt-3">
+      <div className="AddContact d-flex justify-content-between">
+        <h1 className="title text-start ms-2">List of Contacts</h1>
         <Link to="/dates">
-          <button className="btn btn-primary">Add new contact</button>
+          <button className="btn btn-primary me-2">Add new contact</button>
         </Link>
       </div>
-      <h1>List of Contacts</h1>
       {/* Lista de perfiles */}
-      <ul className="list-group mt-5">
+      <ul className="list-group mt-1">
         {store.demo.map((item, index) => (
-          <li key={index} className="list-group-item">
+          <li
+            key={index}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
             <div className="profile-info">
               <img src={item.profilePhoto} alt="Profile" />
               <div>
@@ -34,21 +39,21 @@ export const Home = () => {
                 <div>Phone: {item.phone}</div>
                 <div>Address: {item.address}</div>
               </div>
-            </div>
-            {/* Botones de editar y eliminar */}
-            <div>
-              <button
-                className="btn btn-warning mr-2"
-                onClick={() => actions.editDemoItem(index)}
-              >
-                Editar
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={() => actions.deleteDemoItem(index)}
-              >
-                Eliminar
-              </button>
+
+              <div className="profile-Buttons text-end">
+                <button
+                  className="btn mr-2"
+                  onClick={() => actions.editDemoItem(index)}
+                >
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </button>
+                <button
+                  className="btn mr-2"
+                  onClick={() => actions.deleteDemoItem(index)}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+              </div>
             </div>
           </li>
         ))}

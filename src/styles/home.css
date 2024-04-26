@@ -1,0 +1,42 @@
+.list-group-item + .list-group-item {
+  border: 1px solid #7c6101b4;
+}
+.list-group {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.list-group-item {
+  margin: 10px;
+  border: 1px solid #7c6101b4;
+  padding: 10px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.btn-warning {
+  background-color: none;
+}
+
+.btn-warning:hover {
+  background-color: none;
+}
+
+.btn-danger {
+  background-color: none;
+}
+
+.btn-danger:hover {
+  background-color: none;
+}
