@@ -1,8 +1,7 @@
-// layout.js
 import React from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./app.Context";
+import injectContext from "./appContext";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
