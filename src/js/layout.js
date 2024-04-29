@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./appContext";
+import injectContext from "./store/appContext";
 
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
@@ -24,7 +24,7 @@ const Layout = () => {
           <Navbar />
           <Routes>
             {/* Pasar el ID de contacto como prop solo si está definido */}
-            {theid && <Route path="/" element={<Home contactID={theid} />} />}
+            <Route path="/" element={<Home />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/dates" element={<Dates />} />
             <Route path="/single/:theid" element={<Single />} />

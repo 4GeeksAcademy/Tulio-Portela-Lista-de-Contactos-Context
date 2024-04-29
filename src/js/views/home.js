@@ -14,9 +14,24 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    // Añadir 4 perfiles de ejemplo si no hay ninguno
-    // agregar cambios adicionales al recargar la página
-  }, []);
+    // Verifica si hay perfiles en el almacén
+    if (store.demo.length === 0) {
+      // Si no hay perfiles, agregar algunos de prueba
+      actions.addDemoItem(
+        "John Doe",
+        "123-456-7890",
+        "123 Main St, Anytown",
+        "john@example.com"
+      );
+      actions.addDemoItem(
+        "Jane Smith",
+        "987-654-3210",
+        "456 Elm St, Othertown",
+        "jane@example.com"
+      );
+      // Puedes agregar más perfiles de prueba aquí si lo deseas
+    }
+  }, []); // El segundo argumento del useEffect asegura que solo se ejecute una vez al cargar la página
 
   return (
     <div className="container mt-3">
@@ -40,13 +55,12 @@ export const Home = () => {
                 <div className="Name-Icons">
                   <span>{item.name}</span>
                   <span className="icons">
-                    <Link
-                      to={`/single/${item.id}`}
+                    <button
                       className="btn mr-2"
                       onClick={() => actions.editDemoItem(index)}
                     >
                       <FontAwesomeIcon icon={faPencilAlt} />
-                    </Link>
+                    </button>
                     <button
                       className="btn mr-2"
                       onClick={() => actions.deleteDemoItem(index)}
