@@ -2,12 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
-
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { Dates } from "./views/dates";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faPencilAlt,
   faTrashAlt,
@@ -14,24 +15,23 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    // Verifica si hay perfiles en el almacén
     if (store.demo.length === 0) {
-      // Si no hay perfiles, agregar algunos de prueba
       actions.addDemoItem(
-        "John Doe",
+        "Laura",
         "123-456-7890",
         "123 Main St, Anytown",
-        "john@example.com"
+        "john@example.com",
+        store.images.meOnProgramation
       );
       actions.addDemoItem(
         "Jane Smith",
         "987-654-3210",
         "456 Elm St, Othertown",
-        "jane@example.com"
+        "jane@example.com",
+        store.images.meOnVacation
       );
-      // Puedes agregar más perfiles de prueba aquí si lo deseas
     }
-  }, []); // El segundo argumento del useEffect asegura que solo se ejecute una vez al cargar la página
+  }, []);
 
   return (
     <div className="container mt-3">
@@ -55,12 +55,12 @@ export const Home = () => {
                 <div className="Name-Icons">
                   <span>{item.name}</span>
                   <span className="icons">
-                    <button
+                    <Link
+                      to={`/single/${item.id}`} // Enlace al perfil individual del contacto
                       className="btn mr-2"
-                      onClick={() => actions.editDemoItem(index)}
                     >
                       <FontAwesomeIcon icon={faPencilAlt} />
-                    </button>
+                    </Link>
                     <button
                       className="btn mr-2"
                       onClick={() => actions.deleteDemoItem(index)}

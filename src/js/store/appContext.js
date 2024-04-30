@@ -6,7 +6,6 @@ export const Context = React.createContext(null);
 const injectContext = (PassedComponent) => {
   const StoreWrapper = (props) => {
     const [state, setState] = useState(
-      // Llamar a getState para obtener el estado inicial
       getState({
         getStore: () => state.store,
         getActions: () => state.actions,
