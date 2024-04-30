@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      nextContactId: 1,
       demo: [
         {
           name: "Michi Cat",
@@ -40,6 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       addDemoItem: (name, phone, address, email, profilePhoto) => {
         const store = getStore();
         const newContact = {
+          id: store.nextContactId,
           name: name,
           phone: phone,
           address: address,
@@ -47,8 +49,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           profilePhoto: profilePhoto,
         };
         const updatedDemo = [...store.demo, newContact];
-        setStore({ demo: updatedDemo });
+        setStore({ demo: updatedDemo, nextContactId: store.nextContactId + 1 });
       },
+
       deleteDemoItem: (index) => {
         const store = getStore();
         const updatedDemo = store.demo.filter((item, i) => i !== index);

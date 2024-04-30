@@ -8,12 +8,20 @@ export const Single = () => {
   const [contact, setContact] = useState(null);
 
   useEffect(() => {
-    const selectedContact = store.demo.find((item) => item.id === parseInt(id));
-    setContact(selectedContact);
+    const selectedContact = store.demo.find((item) => item.id === Number(id));
+    if (selectedContact) {
+      setContact(selectedContact);
+    } else {
+      setContact("not found");
+    }
   }, [id, store.demo]);
 
   if (!contact) {
     return <div>Loading...</div>;
+  }
+
+  if (contact === "not found") {
+    return <div>Contact not found</div>;
   }
 
   return (

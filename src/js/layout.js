@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
 import { Home } from "./views/home";
@@ -12,9 +12,6 @@ import { Footer } from "./component/footer";
 const Layout = () => {
   const basename = process.env.BASENAME || "";
 
-  // Obtiene el ID de contacto de los parámetros de la URL
-  const { theid } = useParams();
-
   return (
     <div>
       <BrowserRouter basename={basename}>
@@ -25,7 +22,7 @@ const Layout = () => {
             <Route path="/" element={<Home />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/dates" element={<Dates />} />
-            <Route path="/single/:theid" element={<Single />} />
+            <Route path="/single/:id" element={<Single />} />
             <Route path="*" element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

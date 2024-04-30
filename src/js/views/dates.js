@@ -20,6 +20,25 @@ export const Dates = () => {
   };
 
   const handleSubmit = () => {
+    // Validación de los campos del formulario
+    if (!newContact.fullName) {
+      alert("Por favor, introduce un nombre completo.");
+      return;
+    }
+    if (!newContact.email || !newContact.email.includes("@")) {
+      alert("Por favor, introduce un correo electrónico válido.");
+      return;
+    }
+    if (!newContact.phone || newContact.phone.length < 10) {
+      alert("Por favor, introduce un número de teléfono válido.");
+      return;
+    }
+    if (!newContact.address) {
+      alert("Por favor, introduce una dirección.");
+      return;
+    }
+
+    // Si todas las validaciones son correctas, se añade el nuevo contacto
     actions.addDemoItem(
       newContact.fullName,
       newContact.phone,

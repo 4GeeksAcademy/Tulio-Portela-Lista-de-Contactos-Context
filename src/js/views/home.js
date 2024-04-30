@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import meOnProgramation from "../../img/me-on-programation.jpg";
+import meOnVacation from "../../img/me-on-vacation.jpg";
 import {
   faPencilAlt,
   faTrashAlt,
@@ -17,18 +18,18 @@ export const Home = () => {
   useEffect(() => {
     if (store.demo.length === 0) {
       actions.addDemoItem(
-        "Laura",
+        "Michi Cat",
         "123-456-7890",
         "123 Main St, Anytown",
-        "john@example.com",
-        store.images.meOnProgramation
+        "michicat@example.com",
+        meOnProgramation
       );
       actions.addDemoItem(
-        "Jane Smith",
+        "NoMichi Dog",
         "987-654-3210",
         "456 Elm St, Othertown",
-        "jane@example.com",
-        store.images.meOnVacation
+        "nomichidog@example.com",
+        meOnVacation
       );
     }
   }, []);
@@ -52,7 +53,7 @@ export const Home = () => {
                 className="profile-photo"
               />
               <div>
-                <div className="Name-Icons">
+                <div className="info-Icons">
                   <span>{item.name}</span>
                   <span className="icons">
                     <Link
