@@ -35,7 +35,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3 mb-3">
       <div className="AddContact d-flex justify-content-between">
         <h1 className="title text-start ms-2">List of Contacts</h1>
         <Link to="/dates">
@@ -52,9 +52,9 @@ export const Home = () => {
                 alt="Profile"
                 className="profile-photo"
               />
-              <div>
-                <div className="info-Icons">
-                  <span>{item.name}</span>
+              <div className="w-100">
+                <div className="d-flex justify-content-between m-1">
+                  <span className="h5">{item.name}</span>
                   <span className="icons">
                     <Link
                       to={`/single/${item.id}`} // Enlace al perfil individual del contacto
