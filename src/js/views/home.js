@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ModalDelete } from "./modal-delete";
 import meOnProgramation from "../../img/me-on-programation.jpg";
 import meOnVacation from "../../img/me-on-vacation.jpg";
 import {
@@ -14,6 +15,12 @@ import {
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDelete = (index) => {
+    actions.deleteDemoItem(index);
+    setShowModal(false);
+  };
 
   useEffect(() => {
     if (store.demo.length === 0) {
@@ -64,10 +71,18 @@ export const Home = () => {
                     </Link>
                     <button
                       className="btn mr-2"
-                      onClick={() => actions.deleteDemoItem(index)}
+                      onClick={() => setShowModal(true)}
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal"
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </button>
+                    <ModalDelete
+                      index={index}
+                      onDelete={handleDelete}
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                    />
                   </span>
                 </div>
                 <div>
