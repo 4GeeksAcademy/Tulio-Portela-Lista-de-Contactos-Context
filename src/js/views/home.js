@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import meOnProgramation from "../../img/me-on-programation.jpg";
-import meOnVacation from "../../img/me-on-vacation.jpg";
 import {
   faPencilAlt,
   faTrashAlt,
@@ -38,14 +36,14 @@ export const Home = () => {
         "123-456-7890",
         "123 Main St, Anytown",
         "michicat@example.com",
-        meOnProgramation
+        "https://i.pinimg.com/564x/df/01/d5/df01d540e9700d69716ae45476ff8c77.jpg"
       );
       actions.addDemoItem(
         "NoMichi Dog",
         "987-654-3210",
         "456 Elm St, Othertown",
         "nomichidog@example.com",
-        meOnVacation
+        "https://hips.hearstapps.com/hmg-prod/images/perros-vivir-mas-anos-1669733501.jpg?crop=1.00xw:0.802xh;0,0.100xh&resize=2048:*"
       );
     }
   }, []);
