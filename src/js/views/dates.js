@@ -49,8 +49,8 @@ export const Dates = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h1>Add a New Contact</h1>
+    <div className="container mt-2">
+      <h1 className="mb-3">Add a New Contact</h1>
       <div className="form-group">
         <label htmlFor="fullName">Full name:</label>
         <input
@@ -99,16 +99,15 @@ export const Dates = () => {
           onChange={handleInputChange}
         />
         <div className="buttons-form">
-          <div className="d-flex justify-content-end">
-            <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-              Save
-            </button>
-          </div>
-
-          <div className="d-flex justify-content-start p-0">
-            <Link to="/" className="btn btn-link">
-              Back to Home
+          <div className="d-flex justify-content-between p-0">
+            <Link to="/" className="btn btn-link px-0">
+              Back to home
             </Link>
+            <div className="d-flex justify-content-end">
+              <button className="btn btn-primary mt-3" onClick={handleSubmit}>
+                Save
+              </button>
+            </div>
           </div>
         </div>
       </div>
