@@ -21,7 +21,7 @@ export const Single = () => {
   }
 
   if (contact === "not found") {
-    return <div>Contact not found</div>;
+    return <div>Próximamente c:</div>;
   }
 
   return (

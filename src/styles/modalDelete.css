@@ -1,0 +1,12 @@
+.modal {
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal:not(.show) {
+  opacity: 0;
+  pointer-events: none;
+}

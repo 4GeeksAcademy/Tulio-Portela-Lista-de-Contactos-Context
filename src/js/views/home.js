@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ModalDelete } from "./modal-delete";
 import meOnProgramation from "../../img/me-on-programation.jpg";
 import meOnVacation from "../../img/me-on-vacation.jpg";
 import {
@@ -12,14 +11,24 @@ import {
   faPhoneFlip,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
+import ModalDelete from "./modal-delete";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-  const [showModal, setShowModal] = useState(false);
+  const [showModalIndex, setShowModalIndex] = useState(null);
 
-  const handleDelete = (index) => {
+  const handleDeleteClick = (index) => {
+    console.log("handleDeleteClick called with index: ", index);
+    setShowModalIndex(index);
+  };
+
+  const handleDeleteConfirm = (index) => {
     actions.deleteDemoItem(index);
-    setShowModal(false);
+    setShowModalIndex(null);
+  };
+
+  const handleCancelDelete = () => {
+    setShowModalIndex(null);
   };
 
   useEffect(() => {
@@ -71,18 +80,10 @@ export const Home = () => {
                     </Link>
                     <button
                       className="btn mr-2"
-                      onClick={() => setShowModal(true)}
-                      data-bs-toggle="modal"
-                      data-bs-target="#deleteModal"
+                      onClick={() => handleDeleteClick(index)}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </button>
-                    <ModalDelete
-                      index={index}
-                      onDelete={handleDelete}
-                      showModal={showModal}
-                      setShowModal={setShowModal}
-                    />
                   </span>
                 </div>
                 <div>
@@ -96,6 +97,11 @@ export const Home = () => {
                 </div>
               </div>
             </div>
+
+            <ModalDelete
+              show={showModalIndex === index}
+              handleClose={() => setShowModalIndex(null)}
+            />
           </li>
         ))}
       </ul>
